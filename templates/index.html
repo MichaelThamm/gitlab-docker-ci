@@ -90,16 +90,20 @@ body, html {
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">ABOUT ME</h3>
   <p class="w3-center"><em>Tech Enthusiast</em></p>
-  <p>Embracing the chaos has led me to work in 4 countries, meet Elon Musk, tour SpaceX HQ with classified access, program robots on Boom lifts, and much much more...</p>
   <div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>Michael Thamm</b></p><br>
-      <img src="https://github.com/MichaelThamm/Flask-Docker/blob/main/SiteImages/Headshot.jpg?raw=true" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+      <img src="https://github.com/MichaelThamm/Flask-Docker/blob/main/SiteImages/Headshot.jpg?raw=true" class="w3-round w3-image w3-hover-opacity-off" alt="Photo of Me" width="250" height="350">
     </div>
 
+	<div class="w3-col m6 w3-center w3-padding-small">
+		<p><b><i class="fa fa-user w3-margin-right"></i>Michael Thamm</b></p>
+	</div>
     <!-- Hide this text on small devices -->
     <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>I am forever grateful to my supervisor at Kinarm where I professionally transitioned careers from Electrical Engineer to Software Engineer. For my career experience see myy resume in the HOME page and my hobby projects on GitHub</p>
+		<p>Embracing the chaos has led me to work in 4 different countries, pursue a Masters degree in electric high-speed train motor optimization, meet Elon Musk, 
+		tour SpaceX HQ with classified access, program adaptive welding robots on a Boom lift, IIoT asset data collection for a Tier 1 automotive manufacturer, 
+		and much more ...
+		</p>
     </div>
   </div>
 </div>
@@ -133,6 +137,7 @@ body, html {
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="portfolio">
   <h3 class="w3-center">MY WORK</h3>
+  <p style="text-align:center" class="w3-center"><a href="https://github.com/MichaelThamm/MichaelThamm.github.io/blob/main/MichaelThamm-CV.pdf">MY RESUME</a></p>
   <p class="w3-center">If you are interested in my career hobby-projects follow a link below to the GitHub repository</p>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
@@ -174,11 +179,19 @@ body, html {
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
   <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
+  <p class="w3-center"><em>I am forever grateful to my supervisor at <a href="https://kinarm.com/">Kinarm</a> where I professionally transitioned careers from Electrical Engineer to Software Engineer.<br>
+  My accomplishments and responsibilities include:
+	<ul>
+	  <li>Java and Python backend programming resulting in 3 projects and 21 combined resolved tickets</li>
+	  <li>Operate within the main IT role resulting in 2 projects and 23 resolved tickets</li>
+	  <li>Assembly and integration of Linux Ubuntu host server and Windows Server 2022</li>
+	  <li>On-site installation and collaboration with neuroscience researchers using Kinarms</li>
+	</ul>
+</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-col m4 w3-container">
-      <img src="https://github.com/MichaelThamm/Flask-Docker/blob/main/SiteImages/Kinarm.jpg?raw=true" class="w3-image w3-round" style="width:100%">
+      <img src="https://github.com/MichaelThamm/Flask-Docker/blob/main/SiteImages/Kinarm_logo.jpg?raw=true" class="w3-image w3-round" style="width:100%">
     </div>
     <div class="w3-col m8 w3-panel">
       <div class="w3-large w3-margin-bottom">
@@ -187,17 +200,18 @@ body, html {
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mikethamm44@gmail.com<br>
       </div>
       <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
-      <form action="/action_page.php" target="_blank">
+      <form>
+        <input type="hidden" name="method" value="emailer.py">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name" id="input-name">
           </div>
           <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email" id="input-email">
           </div>
         </div>
-        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" type="submit">
+        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message" id="input-message">
+        <button class="w3-button w3-black w3-right w3-section" type="submit" id="btn-submit">
           <i class="fa fa-paper-plane"></i> SEND MESSAGE
         </button>
       </form>
@@ -209,8 +223,8 @@ body, html {
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
-    <i class="fa fa-github w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <a href="https://github.com/MichaelThamm/MichaelThamm.github.io/blob/main/MichaelThamm-CV.pdf"><i class="fa fa-github w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/michael-thamm-a0b127134/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
   </div>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
@@ -245,6 +259,5 @@ function toggleFunction() {
     }
 }
 </script>
-
 </body>
 </html>
