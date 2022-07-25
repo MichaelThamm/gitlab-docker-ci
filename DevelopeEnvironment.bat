@@ -4,7 +4,4 @@ virtualenv venv
 :: Activate the VM
 venv\Scripts\activate
 
-StartApp.bat
-
-
 EXIT
