@@ -19,3 +19,4 @@ Flask was used to create a web application using the HTML/JavaScript templates f
 - [Heroku-Flask](https://realpython.com/flask-by-example-part-1-project-setup/)
 - [Website-Templates](https://www.w3schools.com/w3css/w3css_templates.asp)
 - [This-Website-Templates](https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_parallax&stacked=h)
+- [Youtube-Heroku-Custom-Domain](https://www.youtube.com/watch?v=_tzkF68ZjVE)
