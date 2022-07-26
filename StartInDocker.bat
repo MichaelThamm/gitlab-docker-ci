@@ -1,5 +1,3 @@
-:: Install requirements
-pip install -r requirements.txt
 :: Show the images and containers before building
 docker images
 docker ps -a
@@ -14,3 +12,5 @@ start chrome %url%
 :: Show the images and containers created
 docker images
 docker ps -a
+
+EXIT
