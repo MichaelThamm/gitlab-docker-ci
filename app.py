@@ -1,6 +1,5 @@
 import sqlite3
-import emailer
-import cgi
+from src import emailer
 from flask import Flask, render_template, request
 
 # https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/

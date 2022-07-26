@@ -95,7 +95,3 @@ def run(form_dict):
 
     smtp_package.mimeMessageBuilder(form_dict)
     smtp_package.smtpExecuteSend(amount=1)
-
-
-# if __name__ == "__main__":
-    # run()

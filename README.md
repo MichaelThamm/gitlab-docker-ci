@@ -1,5 +1,5 @@
 
-Welcome, this is a repo to host a website using Python, JavaScript, HTML.
+Welcome, this is a repo to host a website using Python, JavaScript, HTML, Flask, Docker, Heroku.
 
 # Steps
 The implementation of this website was tested using Windows OS but can be done using Linux or macOS as well since the Docker container works in any OS by using the hosts Linux kernal. However, the batch files in the root directory are intended for Windows users and to replicate them in another OS you will have to find the equivalent operations per your OS. To begin, clone this repo to a local directory.
