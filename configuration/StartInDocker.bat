@@ -1,3 +1,5 @@
+:: Change dir into the project root
+cd ..
 :: Show the images and containers before building
 docker images
 docker ps -a
