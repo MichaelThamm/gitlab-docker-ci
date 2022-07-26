@@ -2,11 +2,6 @@ import sqlite3
 from src import emailer
 from flask import Flask, render_template, request
 
-# https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
-# https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
-# https://www.w3schools.com/w3css/w3css_templates.asp
-# https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_parallax&stacked=h
-
 app = Flask(__name__)
 
 
