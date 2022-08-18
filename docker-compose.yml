@@ -13,10 +13,10 @@ services:
     build: ./Backend
     # Map host port to container port
     ports:
-      - 5001:3001
-    environment:
-      # RiskineApplication is the application name
-      DB_URL: mongodb://database/RiskineApplication
+      - 5001:3000
+#    environment:
+#      # RiskineApplication is the application name
+#      DB_URL: mongodb://database/RiskineApplication
 
   database:
     image: mongo:4.0-xenial
