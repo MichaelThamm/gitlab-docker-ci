@@ -13,6 +13,8 @@ Sync GitHub with GitLab - https://everythingshouldbevirtual.com/git/syncing-gitl
 Notes:
 - JSON is more efficient so it is used for data exchange.
 - YAML is often used for configuration for readability.
+- Since gitlab-Runner exec clones the current state of the local Git repository,
+    be sure to have committed any changes you want to test beforehand.
 
 
 Process:
@@ -25,6 +27,5 @@ Process:
 - docker network ls
     - This shows the networks that containers made with docker-compose can communicate accross
     - Access them using their service names
-
-- docker exec -it <container ID> sh
+- docker exec -it <container ID first 3 letters> sh
     - Interactive terminal
