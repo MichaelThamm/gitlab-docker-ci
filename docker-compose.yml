@@ -7,7 +7,7 @@ services:
     build: .
     # Map host port to container port
     ports:
-      - 5000:5000
+      - 5000:3000
 
 #  backend:
 #    build: ./backend
@@ -17,14 +17,14 @@ services:
 #      # RiskineApplication is the application name
 #      DB_URL: mongodb://database/RiskineApplication
 
-#  database:
-#    image: mongo:4.0-xenial
-#    ports:
-#      - 27017:27017
-#    volumes:
-#      # By default Mongo DB stores data in /data/db
-#      - RiskineApplication:/data/db
-#
-## Define the volume before it can be used
-#volumes:
-#  RiskineApplication:
+  database:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      # By default Mongo DB stores data in /data/db
+      - RiskineApplication:/data/db
+
+# Define the volume before it can be used
+volumes:
+  RiskineApplication:

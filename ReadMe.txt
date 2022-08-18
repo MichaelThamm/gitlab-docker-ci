@@ -21,3 +21,9 @@ Process:
 - docker-compose up
     - --build option will rebuild the containers before starting
     - --d option will start in detached mode
+- docker network ls
+    - This shows the networks that containers made with docker-compose can communicate accross
+    - Access them using their service names
+
+- docker exec -it <container ID> sh
+    - Interactive terminal
