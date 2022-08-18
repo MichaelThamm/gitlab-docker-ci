@@ -7,6 +7,7 @@ Flask: Micro web-framework for python applications
 References:
 GitLab - https://www.youtube.com/watch?v=qP8kir2GUgo
 Docker-Compose - https://www.youtube.com/watch?v=HG6yIjZapSA
+Sync GitHub with GitLab - https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/
 
 
 Notes:
