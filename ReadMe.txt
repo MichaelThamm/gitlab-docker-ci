@@ -15,6 +15,8 @@ Notes:
 - YAML is often used for configuration for readability.
 - Since gitlab-Runner exec clones the current state of the local Git repository,
     be sure to have committed any changes you want to test beforehand.
+- Traefik acts as a reverse-proxy and a load balancer. It also allows all the
+    unsecure protocols to hide behind the reverse-proxy and secure ones are sent to the reverse-proxy
 
 
 Process:

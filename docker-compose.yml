@@ -1,5 +1,10 @@
 version: "3.8"
 
+volumes:
+  RiskineApplication:
+  traefik-ssl-certs:
+    driver: local
+
 services:
 
   frontend:
@@ -14,9 +19,9 @@ services:
     # Map host port to container port
     ports:
       - 5001:3000
-#    environment:
-#      # RiskineApplication is the application name
-#      DB_URL: mongodb://database/RiskineApplication
+    environment:
+      # RiskineApplication is the application name
+      DB_URL: mongodb://database/RiskineApplication
 
   database:
     image: mongo:4.0-xenial
@@ -26,6 +31,14 @@ services:
       # By default Mongo DB stores data in /data/db
       - RiskineApplication:/data/db
 
-# Define the volume before it can be used
-volumes:
-  RiskineApplication:
+#  traefik:
+#    image: "traefik:v2.5"
+#    container_name: "traefik"
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      # (Optional) Expose Dashboard
+#      - "8080:8080"  # Don't do this in production!
+#    volumes:
+#      - /etc/traefik:/etc/traefik
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
