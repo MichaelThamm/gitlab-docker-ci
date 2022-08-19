@@ -1,54 +1,50 @@
 version: "3.8"
 
-volumes:
-  RiskineApplication:
-  traefik-ssl-certs:
-    driver: local
-
 services:
 
   web:
     image: "gitlab/gitlab-ee:latest"
     restart: always
-    hostname: "gitlab.example.com"
+    hostname: "gitlab.michaelthamm.com"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.example.com'
+        external_url 'https://gitlab.michaelthamm.com'
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - 80:80
       - 443:443
       - 22:22
+    expose:
+      - 198.51.100.1:80:80
     volumes:
-      - "D:/Projects/GitLab/Riskine-Application:/var/www/html"
-      - "$GITLAB_HOME/config:/etc/gitlab"
-      - "$GITLAB_HOME/logs:/var/log/gitlab"
-      - "$GITLAB_HOME/data:/var/opt/gitlab"
+      - "config:/etc/gitlab"
+      - "logs:/var/log/gitlab"
+      - "data:/var/opt/gitlab"
     shm_size: '256m'
 
-  frontend:
-    # Dockerfile exists in root
-    build: ./Frontend
-    # Map host port to container port
-    ports:
-      - 5000:3000
+#  frontend:
+#    # Dockerfile exists in root
+#    build: ./Frontend
+#    # Map host port to container port
+#    ports:
+#      - 5000:3000
 
-  backend:
-    build: ./Backend
-    # Map host port to container port
-    ports:
-      - 5001:3000
-    environment:
-      # RiskineApplication is the application name
-      DB_URL: mongodb://database/RiskineApplication
+#  backend:
+#    build: ./Backend
+#    # Map host port to container port
+#    ports:
+#      - 5001:3000
+#    environment:
+#      # RiskineApplication is the application name
+#      DB_URL: mongodb://database/RiskineApplication
 
-  database:
-    image: mongo:4.0-xenial
-    ports:
-      - 27017:27017
-    volumes:
-      # By default Mongo DB stores data in /data/db
-      - RiskineApplication:/data/db
+#  database:
+#    image: mongo:4.0-xenial
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      # By default Mongo DB stores data in /data/db
+#      - RiskineApplication:/data/db
 
 #  traefik:
 #    image: "traefik:v2.5"
@@ -61,3 +57,10 @@ services:
 #    volumes:
 #      - /etc/traefik:/etc/traefik
 #      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  config:
+  logs:
+  data:
+  traefik-ssl-certs:
+    driver: local
