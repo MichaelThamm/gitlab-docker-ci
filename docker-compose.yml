@@ -4,13 +4,8 @@ services:
 
   web:
     # Community edition GitLab
-    image: "gitlab/gitlab-ce:latest"
+    build: ./GitLab
     restart: always
-#    hostname: "gitlab.michaelthamm.com"
-#    environment:
-#      GITLAB_OMNIBUS_CONFIG: |
-#        external_url 'https://gitlab.michaelthamm.com'
-#        # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - 8080:80
       - 443:443
@@ -19,31 +14,15 @@ services:
       - "GitLab-config:/etc/gitlab"
       - "GitLab-logs:/var/log/gitlab"
       - "GitLab-data:/var/opt/gitlab"
+#    Expose the docker socket from host to container
+      - \\.\pipe\docker_engine:\\.\pipe\docker_engine
     shm_size: '2gb'
 
   frontend:
-    # Dockerfile exists in root
     build: ./Frontend
     # Map host port to container port
     ports:
       - 5000:3000
-
-#  backend:
-#    build: ./Backend
-#    # Map host port to container port
-#    ports:
-#      - 5001:3000
-#    environment:
-#      # RiskineApplication is the application name
-#      DB_URL: mongodb://database/RiskineApplication
-
-#  database:
-#    image: mongo:4.0-xenial
-#    ports:
-#      - 27017:27017
-#    volumes:
-#      # By default Mongo DB stores data in /data/db
-#      - RiskineApplication:/data/db
 
 #  traefik:
 #    image: "traefik:v2.5"

@@ -10,6 +10,7 @@ GitLab Using Docker-Compose - https://docs.gitlab.com/ee/install/docker.html#ins
 GitLab - https://www.youtube.com/watch?v=qP8kir2GUgo
 Docker-Compose - https://www.youtube.com/watch?v=HG6yIjZapSA
 Sync GitHub with GitLab - https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/
+Run Docker in Docker - https://www.youtube.com/watch?v=sUy9C1bY3gQ | https://docs.docker.com/engine/install/ubuntu/
 
 
 Notes:
@@ -33,5 +34,7 @@ Process:
 - docker network ls
     - This shows the networks that containers made with docker-compose can communicate accross
     - Access them using their service names
-- docker exec -it <container ID first 3 letters> sh
+- docker exec -it <container ID or name> bash
     - Interactive terminal
+- \\wsl$\docker-desktop-data\data\docker\volumes
+    - Enter this in Windows File Explorer to access the Docker volumes
