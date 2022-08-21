@@ -27,7 +27,9 @@ Process:
     - This executes each Dockerfile to make docker images
 - docker-compose up
     - --build option will rebuild the containers before starting
-    - --d option will start in detached mode
+    - -d option will start in detached mode
+- docker exec -it <container name> cat /etc/gitlab/initial_root_password
+    - This grabs the credentials from the docker container
 - docker network ls
     - This shows the networks that containers made with docker-compose can communicate accross
     - Access them using their service names

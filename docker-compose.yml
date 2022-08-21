@@ -6,27 +6,27 @@ services:
     # Community edition GitLab
     image: "gitlab/gitlab-ce:latest"
     restart: always
-    hostname: "gitlab.michaelthamm.com"
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.michaelthamm.com'
-        # Add any other gitlab.rb configuration here, each on its own line
+#    hostname: "gitlab.michaelthamm.com"
+#    environment:
+#      GITLAB_OMNIBUS_CONFIG: |
+#        external_url 'https://gitlab.michaelthamm.com'
+#        # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - 8080:80
       - 443:443
       - 8081:22
     volumes:
-      - "config:/etc/gitlab"
-      - "logs:/var/log/gitlab"
-      - "data:/var/opt/gitlab"
+      - "GitLab-config:/etc/gitlab"
+      - "GitLab-logs:/var/log/gitlab"
+      - "GitLab-data:/var/opt/gitlab"
     shm_size: '2gb'
 
-#  frontend:
-#    # Dockerfile exists in root
-#    build: ./Frontend
-#    # Map host port to container port
-#    ports:
-#      - 5000:3000
+  frontend:
+    # Dockerfile exists in root
+    build: ./Frontend
+    # Map host port to container port
+    ports:
+      - 5000:3000
 
 #  backend:
 #    build: ./Backend
@@ -58,8 +58,8 @@ services:
 #      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 volumes:
-  config:
-  logs:
-  data:
+  GitLab-config:
+  GitLab-logs:
+  GitLab-data:
   traefik-ssl-certs:
     driver: local
