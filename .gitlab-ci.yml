@@ -1,4 +1,5 @@
 run_test:
+  image: gitlab/gitlab-ce:latest
   tags:
     - Riskine
   script:
