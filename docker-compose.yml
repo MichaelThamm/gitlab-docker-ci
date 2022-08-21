@@ -14,7 +14,7 @@ services:
       - "GitLab-config:/etc/gitlab"
       - "GitLab-logs:/var/log/gitlab"
       - "GitLab-data:/var/opt/gitlab"
-#    Expose the docker socket from host to container
+##    Expose the docker socket from host to container
       - \\.\pipe\docker_engine:\\.\pipe\docker_engine
     shm_size: '2gb'
 

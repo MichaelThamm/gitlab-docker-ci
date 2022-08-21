@@ -5,7 +5,8 @@ Flask: Micro web-framework for python applications
 
 
 References:
-Local GitLab Runner - https://docs.gitlab.com/runner/install/windows.html | https://www.tutorialspoint.com/gitlab/gitlab_installation.htm
+Local GitLab Runner Install - https://docs.gitlab.com/runner/install/windows.html | https://www.tutorialspoint.com/gitlab/gitlab_installation.htm
+Local GitLab Runner Setup - https://www.youtube.com/watch?v=G8ZONHOTAQk
 GitLab Using Docker-Compose - https://docs.gitlab.com/ee/install/docker.html#install-gitlab-using-docker-compose
 GitLab - https://www.youtube.com/watch?v=qP8kir2GUgo
 Docker-Compose - https://www.youtube.com/watch?v=HG6yIjZapSA
