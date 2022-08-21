@@ -1,7 +1,7 @@
 run_test:
   image: python:3.8-slim-buster
   # Prepare environment - install make
-  before_script:
-    - apt-get update && apt-get install make
+  # before_script:
+  #   - apt-get update && apt-get install make
   script:
     - echo "hello"
