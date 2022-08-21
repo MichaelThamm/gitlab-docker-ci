@@ -1,7 +1,5 @@
-job:
+run_test:
   tags:
     - Riskine
-
-run_test:
   script:
     - echo "hello"
