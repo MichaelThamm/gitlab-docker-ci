@@ -1,4 +1,6 @@
-run_test:
+stages:
+  - deploy
+deploy:
   image: python:3.8-slim-buster
   tags:
     - Riskine
