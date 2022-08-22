@@ -36,7 +36,14 @@ Process:
 - docker network ls
     - This shows the networks that containers made with docker-compose can communicate accross
     - Access them using their service names
-- docker exec -it <container ID or name> bash
+- docker exec -it <container ID or name> /bin/bash
     - Interactive terminal
 - \\wsl$\docker-desktop-data\data\docker\volumes
     - Enter this in Windows File Explorer to access the Docker volumes
+- curl gitlab:80
+    - Within a docker container I can run these commands to test connection over docker network bridge
+- gitlab-runner register
+    - Run this on the gitlab-runner docker container
+    - Use http://gitlab.localhost.com for the GitLab instance url
+- apt-get install -y curl && curl -sSL https://get.docker.com/ | sh
+    - This will install docker on a docker container that has the docker socket volume mounted

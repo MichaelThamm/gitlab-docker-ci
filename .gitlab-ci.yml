@@ -1,18 +1,25 @@
-<<<<<<< HEAD
-job:
+stages:
+  - build
+  - test
+  - deploy
+build:
+  stage: build
+  image: python:3.8-slim-buster
   tags:
     - Riskine
-
-run_test:
-  image: gitlab/gitlab-ce:latest
-=======
-stages:
-  - deploy
+  script:
+    - echo "building"
+test:
+  stage: test
+  image: python:3.8-slim-buster
+  tags:
+    - Riskine
+  script:
+    - echo "testing"
 deploy:
   stage: deploy
   image: python:3.8-slim-buster
   tags:
     - Riskine
->>>>>>> a406f3d49bc1d9fa17f76370686d4b4d0285b874
   script:
-    - echo "hello"
+    - echo "deploying"
