@@ -31,6 +31,7 @@ Process:
     - --build option will rebuild the containers before starting
     - -d option will start in detached mode
 - docker exec -it <container name> cat /etc/gitlab/initial_root_password
+    - Username is "root"
     - This grabs the credentials from the docker container
 - docker network ls
     - This shows the networks that containers made with docker-compose can communicate accross

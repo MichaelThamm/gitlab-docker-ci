@@ -3,5 +3,6 @@ job:
     - Riskine
 
 run_test:
+  image: gitlab/gitlab-ce:latest
   script:
     - echo "hello"
