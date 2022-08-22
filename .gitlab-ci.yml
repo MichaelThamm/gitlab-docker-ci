@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 job:
   tags:
     - Riskine
 
 run_test:
   image: gitlab/gitlab-ce:latest
+=======
+stages:
+  - deploy
+deploy:
+  stage: deploy
+  image: python:3.8-slim-buster
+  tags:
+    - Riskine
+>>>>>>> a406f3d49bc1d9fa17f76370686d4b4d0285b874
   script:
     - echo "hello"

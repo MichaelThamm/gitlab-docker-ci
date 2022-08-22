@@ -56,6 +56,15 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://gitlab.localhost.com'
+
+  web:
+    # Community edition GitLab
+    build: ./GitLab
+    restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.example.com'
     ports:
       - '801:80'
       - '443:443'
@@ -83,3 +92,34 @@ services:
 networks:
   default:
     driver: 'bridge'
+      - "GitLab-config:/etc/gitlab"
+      - "GitLab-logs:/var/log/gitlab"
+      - "GitLab-data:/var/opt/gitlab"
+##    Expose the docker socket from host to container
+      - \\.\pipe\docker_engine:\\.\pipe\docker_engine
+    shm_size: '2gb'
+
+  frontend:
+    build: ./Frontend
+    # Map host port to container port
+    ports:
+      - 5000:3000
+
+#  traefik:
+#    image: "traefik:v2.5"
+#    container_name: "traefik"
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      # (Optional) Expose Dashboard
+#      - "8080:8080"  # Don't do this in production!
+#    volumes:
+#      - /etc/traefik:/etc/traefik
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  GitLab-config:
+  GitLab-logs:
+  GitLab-data:
+  traefik-ssl-certs:
+    driver: local
