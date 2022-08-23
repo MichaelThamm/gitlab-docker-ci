@@ -12,7 +12,7 @@ GitLab - https://www.youtube.com/watch?v=qP8kir2GUgo
 Docker-Compose - https://www.youtube.com/watch?v=HG6yIjZapSA
 Sync GitHub with GitLab - https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/
 Run Docker in Docker - https://www.youtube.com/watch?v=sUy9C1bY3gQ | https://docs.docker.com/engine/install/ubuntu/
-
+Modify GitLab Runner config.toml - https://nagachiang.github.io/gitlab-ci-gitlab-runner-cant-fetch-changes-from-repository/#
 
 Notes:
 - JSON is more efficient so it is used for data exchange.
@@ -47,3 +47,11 @@ Process:
     - Use http://gitlab.localhost.com for the GitLab instance url
 - apt-get install -y curl && curl -sSL https://get.docker.com/ | sh
     - This will install docker on a docker container that has the docker socket volume mounted
+- curl http://host.docker.internal:801/
+    - This will access the localhost through the host.docker.internal alias
+
+Locations:
+- /etc/gitlab-runner/config.toml
+    - Inside the gitlab-runner container
+- /etc/gitlab/gitlab.rb
+    - Inside the GitLab container do modify its configuration
