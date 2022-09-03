@@ -3,16 +3,17 @@ services:
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
     restart: always
-#    hostname: 'gitlab.localhost.com'
-#    environment:
-#      GITLAB_OMNIBUS_CONFIG: |
-#        external_url 'http://gitlab.localhost.com'
+    hostname: 'gitlab.localhost.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.localhost.com'
     ports:
       - '801:80'
       - '443:443'
       - '22:22'
     # Expose the docker socket
     volumes:
+#     persist database using volumes and docker container
       - "//var/run/docker.sock:/var/run/docker.sock"
       - 'gitLab-config:/etc/gitlab'
       - 'gitLab-logs:/var/log/gitlab'
@@ -31,7 +32,13 @@ services:
     networks:
       - 'default'
 
-#  traefik:
+  front-end:
+    build: ./Frontend
+    restart: always
+    ports:
+      - '5000:3000'
+
+#  database:
 #    image: "traefik:v2.5"
 #    container_name: "traefik"
 #    ports:

@@ -53,5 +53,6 @@ Process:
 Locations:
 - /etc/gitlab-runner/config.toml
     - Inside the gitlab-runner container
+    - gitlab-runner reconfigure
 - /etc/gitlab/gitlab.rb
     - Inside the GitLab container do modify its configuration

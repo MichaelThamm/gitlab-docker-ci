@@ -14,8 +14,12 @@ test:
   image: python:3.8-slim-buster
   tags:
     - Riskine
+  before_script:
+    - apt-get curl
   script:
     - echo "testing"
+    - curl "hhtp://"
+#  Run a curl test 4 docker container
 deploy:
   stage: deploy
   image: python:3.8-slim-buster
