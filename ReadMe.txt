@@ -44,7 +44,7 @@ Process:
     - Within a docker container I can run these commands to test connection over docker network bridge
 - gitlab-runner register
     - Run this on the gitlab-runner docker container
-    - Use http://gitlab.localhost.com for the GitLab instance url
+    - Use http://gitlab for the GitLab instance url
 - apt-get install -y curl && curl -sSL https://get.docker.com/ | sh
     - This will install docker on a docker container that has the docker socket volume mounted
 - curl http://host.docker.internal:801/
