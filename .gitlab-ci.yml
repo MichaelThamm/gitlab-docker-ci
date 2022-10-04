@@ -7,16 +7,16 @@ build:
   tags:
     - Riskine
   script:
-    - echo "building"
+    - echo "build"
 test:
   stage: test
   tags:
     - Riskine
   script:
-    - echo "testing"
+    - echo "test"
 deploy:
   stage: deploy
   tags:
     - Riskine
   script:
-    - echo "deploying"
+    - echo "deploy"
