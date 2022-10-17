@@ -2,7 +2,7 @@ version: '3'
 services:
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
-    restart: always
+    # restart: always
     ports:
       - '80:80'
     volumes:
@@ -17,7 +17,7 @@ services:
     image: 'gitlab/gitlab-runner:latest'
     depends_on:
       - 'gitlab'
-    restart: always
+    # restart: always
     volumes:
       - 'gitlab-runner-config:/etc/gitlab-runner'
     networks:
@@ -25,7 +25,7 @@ services:
 
   front-end:
     build: ./Frontend
-    restart: always
+    # restart: always
     ports:
       - '3000:3000'
 
