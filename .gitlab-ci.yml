@@ -5,18 +5,18 @@ stages:
 build:
   stage: build
   tags:
-    - Riskine
+    - Dev
   script:
     - echo "build"
 test:
   stage: test
   tags:
-    - Riskine
+    - Dev
   script:
     - echo "test"
 deploy:
   stage: deploy
   tags:
-    - Riskine
+    - Dev
   script:
     - echo "deploy"

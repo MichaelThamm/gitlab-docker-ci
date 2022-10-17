@@ -18,11 +18,10 @@ There is a sample front end application using Flask which is hidden behind Traef
     - This mirrors the local GitLab repo from the public GitHub repo
     - Check the "Sync GitHub with GitLab" reference below
     - Setup GitHub as both fetch and push, GitLab as just push
-- docker-compose build
-    - Uses the docker-compose.yml file to build the docker network
-    - This executes each Dockerfile to make docker images
-- docker-compose up
-    - --build option will rebuild the containers before starting
+- Use the docker-compose.yml file to build the docker network
+    - Execute "docker-compose build"
+    - This executes each service config or a specified Dockerfile to make docker images
+- docker-compose up -d
     - -d option will start in detached mode
 - docker exec -it <container name> cat /etc/gitlab/initial_root_password
     - Username is "root"
