@@ -1,4 +1,15 @@
 version: '3'
+
+networks:
+  default:
+    driver: 'bridge'
+
+volumes:
+  gitLab-config:
+  gitLab-logs:
+  gitLab-data:
+  gitlab-runner-config:
+
 services:
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
@@ -28,13 +39,3 @@ services:
     # restart: always
     ports:
       - '3000:3000'
-
-networks:
-  default:
-    driver: 'bridge'
-
-volumes:
-  gitLab-config:
-  gitLab-logs:
-  gitLab-data:
-  gitlab-runner-config:

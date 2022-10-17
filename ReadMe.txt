@@ -7,14 +7,17 @@ Docker-Compose: Run multiple docker containers together
 Flask: Micro web-framework for python applications
 Traefik: Reverse-proxy and load balancer
 
+This project is a guide on setting up a local GitLab instance that has a designated GitLab Runner to execute a CI/CD pipeline.
+There is a sample front end application using Flask which is hidden behind Traefik's reverse proxy, all of which are built using docker-compose.
+
 
 ---Process---
 
-- Clone the GitHub repo to a local directory
+- Clone this GitHub repo to a local directory
     - We want GitHub to act as the main repo and GitLab will act as a local repo
+    - This mirrors the local GitLab repo from the public GitHub repo
     - Check the "Sync GitHub with GitLab" reference below
     - Setup GitHub as both fetch and push, GitLab as just push
-    - This mirrors the local GitLab repo from the main GitHub repo
 - docker-compose build
     - Uses the docker-compose.yml file to build the docker network
     - This executes each Dockerfile to make docker images
