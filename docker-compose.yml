@@ -1,41 +1,63 @@
-version: '3'
+version: "3"
 
 networks:
   default:
-    driver: 'bridge'
-
-volumes:
-  gitLab-config:
-  gitLab-logs:
-  gitLab-data:
-  gitlab-runner-config:
+    driver: "bridge"
+  traefik-web:
+    driver: "bridge"
+    external: true
 
 services:
+  traefik:
+    image: traefik:latest
+    # command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"                                                             # The Web UI (enabled by --api.insecure=true)
+    # networks:
+    #   - traefik-web
+    volumes:
+      # - ./Traefik/config.yml:/etc/traefik/config.yml               # Set the dynamic configuration for the file provider
+      - "./Services/Traefik/traefik.yml:/etc/traefik/traefik.yml"             # Set the static configuration
+      - "./Services/Traefik/acme:/etc/traefik/acme"                                    # Set the location where my ACME certificates are saved to
+      - "//var/run/docker.sock:/var/run/docker.sock"                              # Give access to the Windows Docker socket
+    labels:
+      traefik.enable: "true"
+    #   traefik.docker.network: "traefik-web"
+    #   traefik.http.routers.traefik.entrypoints: "http"
+  
   gitlab:
-    image: 'gitlab/gitlab-ce:latest'
+    image: "gitlab/gitlab-ce:latest"
     # restart: always
     ports:
-      - '80:80'
+      - "81:81"
     volumes:
 #     persist database using volumes and docker container
-      - 'gitLab-config:/etc/gitlab'
-      - 'gitLab-logs:/var/log/gitlab'
-      - 'gitLab-data:/var/opt/gitlab'
+      - "./Services/GitLab/config:/etc/gitlab"
+      - "./Services/GitLab/logs:/var/log/gitlab"
+      - "./Services/GitLab/data:/var/opt/gitlab"
     networks:
-      - 'default'
+      - "default"
 
   gitlab-runner:
-    image: 'gitlab/gitlab-runner:latest'
+    image: "gitlab/gitlab-runner:latest"
     depends_on:
-      - 'gitlab'
+      - "gitlab"
+    ports:
+      - "82:82"
     # restart: always
     volumes:
-      - 'gitlab-runner-config:/etc/gitlab-runner'
+      - "./Services/GitLab/runner/config:/etc/gitlab-runner"
     networks:
-      - 'default'
+      - "default"
 
   front-end:
     build: ./Frontend
     # restart: always
     ports:
-      - '3000:3000'
+      - "83:83"
+    labels:
+      traefik.enable: true
+    networks:
+      - traefik-web
