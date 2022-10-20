@@ -16,9 +16,6 @@ There is a sample front end application using Flask which is hidden behind Traef
 - Clone this GitHub repo to a local directory
     - We want GitHub to act as the main repo
 
-- Create a docker network
-    - Execute "docker network create web"
-
 - Use the docker-compose.yml file to build the docker network
     - Execute "docker-compose build"
     - This executes each service config or a specified Dockerfile to make docker images
