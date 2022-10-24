@@ -16,7 +16,7 @@ services:
     volumes:
       # - ./Traefik/config.yml:/etc/traefik/config.yml               # Set the dynamic configuration for the file provider
       - "./Services/Traefik/traefik.yml:/etc/traefik/traefik.yml"             # Set the static configuration
-      # - "./Services/Traefik/letsencrypt:/letsencrypt"                                    # Set the location where my ACME certificates are saved to
+      - "./Services/Traefik/letsencrypt:/letsencrypt"                                    # Set the location where my ACME certificates are saved to
       - "//var/run/docker.sock:/var/run/docker.sock"                              # Give access to the Windows Docker socket
     labels:
       - "traefik.enable=true"
