@@ -3,8 +3,6 @@ version: "3"
 networks:
   default:
     driver: "bridge"
-  web:
-
 
 services:
   traefik:
@@ -12,21 +10,21 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"                                                             # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080" # Web UI (enabled by --api.insecure=true)
     volumes:
-      # - ./Traefik/config.yml:/etc/traefik/config.yml               # Set the dynamic configuration for the file provider
-      - "./Services/Traefik/traefik.yml:/etc/traefik/traefik.yml"             # Set the static configuration
-      - "./Services/Traefik/letsencrypt:/letsencrypt"                                    # Set the location where my ACME certificates are saved to
-      - "//var/run/docker.sock:/var/run/docker.sock"                              # Give access to the Windows Docker socket
+      # - ./Traefik/config.yml:/etc/traefik/config.yml # Set the dynamic configuration for the file provider
+      - "./Services/Traefik/traefik.yml:/etc/traefik/traefik.yml" # Set the static configuration
+      - "./Services/Traefik/letsencrypt:/letsencrypt" # Set the location where my ACME certificates are saved to
+      - "/var/run/docker.sock:/var/run/docker.sock" # Give access to the Docker socket
     labels:
       - "traefik.enable=true"
   
   gitlab:
     image: "gitlab/gitlab-ce:latest"
     volumes:
-      - "./Services/GitLab/config:/etc/gitlab"
-      - "./Services/GitLab/logs:/var/log/gitlab"
-      - "./Services/GitLab/data:/var/opt/gitlab"
+      - "gitlab-config:/etc/gitlab"
+      - "gitlab-logs:/var/log/gitlab"
+      - "gitlab-data:/var/opt/gitlab"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gitlab.rule=Host(`gitlab.docker.localhost`)"
@@ -37,7 +35,7 @@ services:
     depends_on:
       - "gitlab"
     volumes:
-      - "./Services/GitLab/runner/config:/etc/gitlab-runner"
+      - "gitlab-runner-config:/etc/gitlab-runner"
     labels:
       - "traefik.enable=false"
       - "traefik.http.routers.gitlab-runner.rule=Host(`runner.docker.localhost`)"
@@ -55,8 +53,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
 
-  nginx:
-    image: "nginx:latest"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`nginx.docker.localhost`)"
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:
+  gitlab-runner-config:

@@ -1,20 +1,19 @@
----Background---
-
-GitLab: CI/CD tool and repository
-GitLab Runner: Configurable Docker container to initiate CI/CD pipeline
-Docker: Containerization on linux kernals of host
-Docker-Compose: Run multiple docker containers together
-Flask: Micro web-framework for python applications
-Traefik: Reverse-proxy and load balancer
+# Background
 
 This project is a guide on setting up a local GitLab instance that has a designated GitLab Runner to execute a CI/CD pipeline.
 There is a sample front end application using Flask which is hidden behind Traefik's reverse proxy, all of which are built using docker-compose.
 
+* GitLab: CI/CD tool and repository
+* GitLab Runner: Configurable Docker container to conduct CI/CD pipeline jobs
+* Docker: Containerization of services on a host
+* Docker-Compose: Run multiple docker services together
+* Flask: Micro web-framework for python applications
+* Traefik: Reverse-proxy and load balancer
 
----Process---
+# Process
 
-- Clone this GitHub repo to a local directory
-    - We want GitHub to act as the main repo
+* Clone this GitHub repo to a local directory
+  * We want GitHub to act as the main repo
 
 - Use the docker-compose.yml file to build the docker network
     - Execute "docker-compose build"
