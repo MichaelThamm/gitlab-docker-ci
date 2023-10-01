@@ -11,30 +11,27 @@ There is a sample front end application using Flask which is hidden behind Traef
 * Traefik: Reverse-proxy and load balancer
 
 # Process
+## On Your Host
 
-* Clone this GitHub repo to a local directory
-  * We want GitHub to act as the main repo
+1. Clone this GitHub repo to a local directory
+2. Use the docker-compose.yml file to serve the docker services
+   1. Execute "docker-compose up -d"
+5. asdsad
 
-- Use the docker-compose.yml file to build the docker network
-    - Execute "docker-compose build"
-    - This executes each service config or a specified Dockerfile to make docker images
+:smile:
 
-- Start the containers
-    - Execute "docker-compose up -d"
-    - -d option will start containers in detached mode
+## In GitLab Service
 
-- On initial login of local GitLab instance, obtain the initial root password
-    - Navigate to a browser and enter "gitlab.docker.localhost"
-    - Execute "docker exec -it <container name> cat /etc/gitlab/initial_root_password"
-    - This grabs the credentials from the docker container
-    - Username is "root"
-    - Make sure to add a user and make yourself an admin
+3. On initial login of local GitLab instance, obtain the initial root password
+   1. TLDR; Execute "docker compose exec gitlab cat /etc/gitlab/initial_root_password"
+   2. [set-up-the-initial-password](https://docs.gitlab.com/omnibus/installation/index.html#set-up-the-initial-password)
+4. Create a [personal access token (PAT)](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) in GitLab
 
-- Mirror the GitHub repo with GitLab's repo
-    - Check the "Sync GitHub with GitLab" reference below
-    - Create a blank project in the local GitLab instance
-    - Copy the URL of this GitLab project
-    - Setup GitHub as both fetch and push, GitLab as just push
+5. Mirror the GitHub repo with GitLab's repo
+    1. [Sync GitHub with GitLab](https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/)
+    2. Create a blank project in the local GitLab instance
+    3. Copy the URL of this GitLab project
+    4. Setup GitHub as both fetch and push, GitLab as just push
 
 - Register a gitlab runner for this project
     - In the local GitLab instance, navigate to the project's settings
@@ -47,7 +44,7 @@ There is a sample front end application using Flask which is hidden behind Traef
     - For the executor select "shell"
 
 
----References---
+# References
 
 Local GitLab Runner Install - https://docs.gitlab.com/runner/install/windows.html | https://www.tutorialspoint.com/gitlab/gitlab_installation.htm
 Local GitLab Runner Setup - https://www.youtube.com/watch?v=G8ZONHOTAQk
