@@ -11,23 +11,21 @@ There is a sample front end application using Flask which is hidden behind Traef
 * Traefik: Reverse-proxy and load balancer
 
 # Process
-## On Your Host
 
-1. Clone this GitHub repo to a local directory
-2. Use the docker-compose.yml file to serve the docker services
+* :computer: -> On your host device
+* :fox_face: -> In GitLab service
+* 
+
+1. :computer: Clone this GitHub repo to a local directory
+2. :computer: Use the docker-compose.yml file to serve the docker services
    1. Execute "docker-compose up -d"
-5. asdsad
 
-:smile:
-
-## In GitLab Service
-
-3. On initial login of local GitLab instance, obtain the initial root password
+3. :computer: On initial login of local GitLab instance, obtain the initial root password
    1. TLDR; Execute "docker compose exec gitlab cat /etc/gitlab/initial_root_password"
-   2. [set-up-the-initial-password](https://docs.gitlab.com/omnibus/installation/index.html#set-up-the-initial-password)
-4. Create a [personal access token (PAT)](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) in GitLab
+      1. More info -> [set-up-the-initial-password](https://docs.gitlab.com/omnibus/installation/index.html#set-up-the-initial-password)
+4. :fox_face: Create a [personal access token (PAT)](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) in GitLab
 
-5. Mirror the GitHub repo with GitLab's repo
+5. :computer: Mirror the GitHub repo with GitLab's repo
     1. [Sync GitHub with GitLab](https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/)
     2. Create a blank project in the local GitLab instance
     3. Copy the URL of this GitLab project
