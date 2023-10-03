@@ -1,5 +1,4 @@
-GitLab/
-Traefik/letsencrypt/
+services/traefik/letsencrypt/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

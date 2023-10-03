@@ -12,9 +12,9 @@ services:
       - "443:443"
       - "8080:8080" # Web UI (enabled by --api.insecure=true)
     volumes:
-      # - ./Traefik/config.yml:/etc/traefik/config.yml # Set the dynamic configuration for the file provider
-      - "./Services/Traefik/traefik.yml:/etc/traefik/traefik.yml" # Set the static configuration
-      - "./Services/Traefik/letsencrypt:/letsencrypt" # Set the location where my ACME certificates are saved to
+      # - ./traefik/config.yml:/etc/traefik/config.yml # Set the dynamic configuration for the file provider
+      - "./services/traefik/traefik.yml:/etc/traefik/traefik.yml" # Set the static configuration
+      - "./services/traefik/letsencrypt:/letsencrypt" # Set the location where my ACME certificates are saved to
       - "/var/run/docker.sock:/var/run/docker.sock" # Give access to the Docker socket
     labels:
       - "traefik.enable=true"
@@ -36,12 +36,15 @@ services:
       - "gitlab"
     volumes:
       - "gitlab-runner-config:/etc/gitlab-runner"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     labels:
       - "traefik.enable=false"
       - "traefik.http.routers.gitlab-runner.rule=Host(`runner.docker.localhost`)"
+    healthcheck:
+      test: [ "CMD-SHELL", "echo", "hello world" ]
 
   front-end:
-    build: "./Services/Frontend"
+    build: "./services/frontend"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.front-end.rule=Host(`fe.docker.localhost`)"
