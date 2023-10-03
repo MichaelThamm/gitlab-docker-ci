@@ -1,3 +1,10 @@
+## TODO
+* Update the gitlab-ci.yml in the frontend repo
+* Update the gitlab-runner with the new Dockerfile
+* Finish updating the shell scripts
+* Create a requirements section in the README
+  * e.g. must run with Linux, create .env file in root, ...
+
 # Background
 
 This project is a guide on setting up a local GitLab instance that has a designated GitLab Runner to execute a CI/CD pipeline.
