@@ -10,31 +10,31 @@ There is a sample front end application using Flask which is hidden behind Traef
 * Flask: Micro web-framework for python applications
 * Traefik: Reverse-proxy and load balancer
 
+# Variables
+* **LOCAL_DIRECTORY** - host directory where this repo was cloned to
+* **GITLAB_ADMIN_USER** - ```root``` by default
+* **GITLAB_ADMIN_PSWD** - found in ```/etc/gitlab/initial_root_password```
+* **GITLAB_PROJECT_NAME** - ```my-ci-project```
+* **GITLAB_PAT** - get this from your GitLab instance
+
 # Process
 
-* Clone this GitHub repo to a local directory
-  * We want GitHub to act as the main repo
+* :computer: -> On your host device
+* :fox_face: -> In GitLab service
+* 
 
-- Use the docker-compose.yml file to build the docker network
-    - Execute "docker-compose build"
-    - This executes each service config or a specified Dockerfile to make docker images
-
-- Start the containers
-    - Execute "docker-compose up -d"
-    - -d option will start containers in detached mode
-
-- On initial login of local GitLab instance, obtain the initial root password
-    - Navigate to a browser and enter "gitlab.docker.localhost"
-    - Execute "docker exec -it <container name> cat /etc/gitlab/initial_root_password"
-    - This grabs the credentials from the docker container
-    - Username is "root"
-    - Make sure to add a user and make yourself an admin
-
-- Mirror the GitHub repo with GitLab's repo
-    - Check the "Sync GitHub with GitLab" reference below
-    - Create a blank project in the local GitLab instance
-    - Copy the URL of this GitLab project
-    - Setup GitHub as both fetch and push, GitLab as just push
+1. :computer: Clone this GitHub repo to a LOCAL_DIRECTORY
+2. :computer: Use the docker-compose.yml file to serve the docker services with ```docker-compose up -d```
+3. :computer: On initial login of local GitLab instance, obtain the initial root password
+   1. TLDR; Execute ```docker compose exec gitlab cat /etc/gitlab/initial_root_password```
+      1. More info -> [set-up-the-initial-password](https://docs.gitlab.com/omnibus/installation/index.html#set-up-the-initial-password)
+4. :fox_face: Create a [personal access token (PAT)](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) in GitLab
+5. :computer: Create a project in the GitLab service ```curl --request POST --header "PRIVATE-TOKEN: ${GITLAB_PAT}" --data "name=${GITLAB_PROJECT_NAME}" "http://gitlab.docker.localhost/api/v4/projects"```
+5. :computer: Set up a project to manage with CI
+    * _Note: I decided to use my [website-repo](https://github.com/MichaelThamm/website) but you can serve a static index.html file with Flask for simplicity_
+    1.  git push ```http://${GITLAB_ADMIN_USER}:${GITLAB_ADMIN_PSWD}@gitlab.docker.localhost/root/${GITLAB_PROJECT_NAME}```
+    1. [Sync GitHub with GitLab](https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/)
+    4. Setup GitHub as both fetch and push, GitLab as just push
 
 - Register a gitlab runner for this project
     - In the local GitLab instance, navigate to the project's settings
@@ -47,7 +47,7 @@ There is a sample front end application using Flask which is hidden behind Traef
     - For the executor select "shell"
 
 
----References---
+# References
 
 Local GitLab Runner Install - https://docs.gitlab.com/runner/install/windows.html | https://www.tutorialspoint.com/gitlab/gitlab_installation.htm
 Local GitLab Runner Setup - https://www.youtube.com/watch?v=G8ZONHOTAQk
