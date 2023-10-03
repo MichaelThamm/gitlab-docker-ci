@@ -1,6 +1,6 @@
 FROM gitlab/gitlab-runner:latest
-#prerequisites
 
+#prerequisites
 RUN apt update \
     && apt --yes install apt-utils nano
     
@@ -12,5 +12,6 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     && groupmod -g 1003 gitlab-runner \
     && gpasswd -a gitlab-runner docker \
     && usermod -aG docker gitlab-runner
+
 #buildx builder
 RUN docker buildx install
