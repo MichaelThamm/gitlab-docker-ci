@@ -12,11 +12,10 @@ There is a sample front end application using Flask which is hidden behind Traef
 
 # Variables
 * **LOCAL_DIRECTORY** - host directory where this repo was cloned to
-* **GITLAB_HOST** - ```gitlab.docker.localhost```
 * **GITLAB_ADMIN_USER** - ```root``` by default
 * **GITLAB_ADMIN_PSWD** - found in ```/etc/gitlab/initial_root_password```
 * **GITLAB_PROJECT_NAME** - ```my-ci-project```
-* **PAT** - get this from your GitLab instance
+* **GITLAB_PAT** - get this from your GitLab instance
 
 # Process
 
@@ -30,10 +29,10 @@ There is a sample front end application using Flask which is hidden behind Traef
    1. TLDR; Execute ```docker compose exec gitlab cat /etc/gitlab/initial_root_password```
       1. More info -> [set-up-the-initial-password](https://docs.gitlab.com/omnibus/installation/index.html#set-up-the-initial-password)
 4. :fox_face: Create a [personal access token (PAT)](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) in GitLab
-5. :computer: Create a project in the GitLab service ```curl --request POST --header "PRIVATE-TOKEN: ${PAT}" --data "name=${GITLAB_PROJECT_NAME}" "http://${GITLAB_HOST}/api/v4/projects"```
+5. :computer: Create a project in the GitLab service ```curl --request POST --header "PRIVATE-TOKEN: ${GITLAB_PAT}" --data "name=${GITLAB_PROJECT_NAME}" "http://gitlab.docker.localhost/api/v4/projects"```
 5. :computer: Set up a project to manage with CI
     * _Note: I decided to use my [website-repo](https://github.com/MichaelThamm/website) but you can serve a static index.html file with Flask for simplicity_
-    1.  git push ```http://${GITLAB_ADMIN_USER}:${GITLAB_ADMIN_PSWD}@${GITLAB_HOST}/root/${GITLAB_PROJECT_NAME}```
+    1.  git push ```http://${GITLAB_ADMIN_USER}:${GITLAB_ADMIN_PSWD}@gitlab.docker.localhost/root/${GITLAB_PROJECT_NAME}```
     1. [Sync GitHub with GitLab](https://everythingshouldbevirtual.com/git/syncing-gitlab-and-github-repos/)
     4. Setup GitHub as both fetch and push, GitLab as just push
 
